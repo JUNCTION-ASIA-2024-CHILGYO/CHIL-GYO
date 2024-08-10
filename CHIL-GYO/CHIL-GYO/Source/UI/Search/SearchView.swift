@@ -10,6 +10,13 @@ import SwiftUI
 struct SearchView: View {
     @State private var searchText: String = ""
     @State private var recentSearches: [String] = []
+    @State private var suggestedSearches: [String] = []
+    @State private var searchResults: [String] = []
+    
+    private let allSearchSuggestions: [String] = [
+        "Strawberry", "Watermelon", "Pineapple", "Coffee", "Drinks",
+        "Mango", "Navigation", "Melon", "Strawberry juice", "Strawberry Cake"
+    ]
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -25,12 +32,24 @@ struct SearchView: View {
                     Image(systemName: "magnifyingglass")
                     
                     TextField("Search...", text: $searchText, onCommit: {
-                        addRecentSearch()
-                    }).foregroundColor(.primary)
+                        handleSearch()
+                    })
+                    .onChange(of: searchText) { _, _ in
+                        if searchText.isEmpty {
+                            searchResults = []
+                            updateSuggestedSearches()
+                        } else {
+                            searchResults = []
+                            updateSuggestedSearches()
+                        }
+                    }
+                    .foregroundStyle(Color.primary)
                     
                     if !searchText.isEmpty {
                         Button(action: {
                             self.searchText = ""
+                            self.suggestedSearches = []
+                            self.searchResults = []
                         }) {
                             Image(systemName: "xmark.circle.fill")
                         }
@@ -39,15 +58,38 @@ struct SearchView: View {
                     }
                 }
                 .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
-                .foregroundColor(.secondary)
+                .foregroundStyle(Color.secondary)
                 .background(Color(.secondarySystemBackground))
                 .cornerRadius(10.0)
             }
             
-            if !recentSearches.isEmpty {
+            if !searchText.isEmpty && !searchResults.isEmpty {
+                ForEach(searchResults, id: \.self) { item in
+                    Rectangle()
+                        .frame(width: 136, height: 172)
+                }
+            } else if !searchText.isEmpty && !suggestedSearches.isEmpty {
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("Recommands")
+                        .fontWeight(.semibold)
+                        .padding(.top, 20)
+                    
+                    ForEach(suggestedSearches, id: \.self) { item in
+                        VStack(alignment: .leading, spacing: 0) {
+                            Text(item)
+                                .padding(.vertical, 8)
+                                .padding(.leading, 10)
+                                .padding(.trailing, 10)
+                            
+                            Divider()
+                        }
+                    }
+                }
+            } else if !recentSearches.isEmpty {
                 VStack(alignment: .leading, spacing: 0) {
                     Text("Recents")
                         .fontWeight(.semibold)
+                        .padding(.top, 20)
                     
                     WrappingHStack(items: recentSearches, spacing: 8) { item in
                         HStack(spacing: 8) {
@@ -71,7 +113,6 @@ struct SearchView: View {
                         .padding(.top, 4)
                     }
                 }
-                .padding(.top, 20)
             }
             
             Spacer()
@@ -79,16 +120,28 @@ struct SearchView: View {
         .padding(.horizontal, 16)
     }
     
-    private func addRecentSearch() {
+    private func handleSearch() {
         if !searchText.isEmpty {
             recentSearches.removeAll(where: { $0 == searchText })
             recentSearches.insert(searchText, at: 0)
+            
+            searchResults = allSearchSuggestions.filter { $0.lowercased().contains(searchText.lowercased()) }
+            
             searchText = ""
+            suggestedSearches = []
         }
     }
     
     private func deleteRecentSearch(_ search: String) {
         recentSearches.removeAll(where: { $0 == search })
+    }
+    
+    private func updateSuggestedSearches() {
+        if !searchText.isEmpty {
+            suggestedSearches = allSearchSuggestions.filter { $0.lowercased().contains(searchText.lowercased()) }
+        } else {
+            suggestedSearches = []
+        }
     }
 }
 
