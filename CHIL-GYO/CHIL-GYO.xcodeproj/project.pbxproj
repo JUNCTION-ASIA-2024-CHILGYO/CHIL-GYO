@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1EEE01BB2C679DD3006F45C9 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EEE01BA2C679DD3006F45C9 /* SearchView.swift */; };
 		39758F3D2C678C4C00058011 /* CHIL_GYOApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39758F3C2C678C4C00058011 /* CHIL_GYOApp.swift */; };
 		39758F3F2C678C4C00058011 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39758F3E2C678C4C00058011 /* ContentView.swift */; };
 		39758F412C678C4D00058011 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39758F402C678C4D00058011 /* Assets.xcassets */; };
@@ -14,7 +15,6 @@
 		39758F512C678CD300058011 /* StringLiterals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39758F502C678CD300058011 /* StringLiterals.swift */; };
 		39758F532C678D2F00058011 /* View+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39758F522C678D2F00058011 /* View+.swift */; };
 		39758F5E2C678DDB00058011 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39758F5D2C678DDB00058011 /* Home.swift */; };
-		39758F602C678DE800058011 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39758F5F2C678DE800058011 /* Search.swift */; };
 		39758F622C678DEF00058011 /* FoodDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39758F612C678DEF00058011 /* FoodDetail.swift */; };
 		39758F642C67922E00058011 /* SwiftDataExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39758F632C67922E00058011 /* SwiftDataExample.swift */; };
 		39758F662C67926500058011 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39758F652C67926500058011 /* Launch Screen.storyboard */; };
@@ -30,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1EEE01BA2C679DD3006F45C9 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		39758F392C678C4C00058011 /* CHIL-GYO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CHIL-GYO.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39758F3C2C678C4C00058011 /* CHIL_GYOApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CHIL_GYOApp.swift; sourceTree = "<group>"; };
 		39758F3E2C678C4C00058011 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -38,7 +39,6 @@
 		39758F502C678CD300058011 /* StringLiterals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringLiterals.swift; sourceTree = "<group>"; };
 		39758F522C678D2F00058011 /* View+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+.swift"; sourceTree = "<group>"; };
 		39758F5D2C678DDB00058011 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
-		39758F5F2C678DE800058011 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		39758F612C678DEF00058011 /* FoodDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetail.swift; sourceTree = "<group>"; };
 		39758F632C67922E00058011 /* SwiftDataExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataExample.swift; sourceTree = "<group>"; };
 		39758F652C67926500058011 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -206,7 +206,7 @@
 		39758F592C678DB200058011 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				39758F5F2C678DE800058011 /* Search.swift */,
+				1EEE01BA2C679DD3006F45C9 /* SearchView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -310,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39758F622C678DEF00058011 /* FoodDetail.swift in Sources */,
+				1EEE01BB2C679DD3006F45C9 /* SearchView.swift in Sources */,
 				39758F532C678D2F00058011 /* View+.swift in Sources */,
 				39758F3F2C678C4C00058011 /* ContentView.swift in Sources */,
 				39758F722C67CDBA00058011 /* FoodSampleData.swift in Sources */,
@@ -317,7 +318,6 @@
 				39758F642C67922E00058011 /* SwiftDataExample.swift in Sources */,
 				39758F6D2C67B6CF00058011 /* Comment.swift in Sources */,
 				39758F6B2C67B35900058011 /* Food.swift in Sources */,
-				39758F602C678DE800058011 /* Search.swift in Sources */,
 				39758F7B2C67DACF00058011 /* SampleDataManager.swift in Sources */,
 				39758F512C678CD300058011 /* StringLiterals.swift in Sources */,
 				39758F782C67D31C00058011 /* IssueSampleData.swift in Sources */,
@@ -458,7 +458,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CHIL-GYO/Preview Content\"";
-				DEVELOPMENT_TEAM = D23XDL6TZZ;
+				DEVELOPMENT_TEAM = R62RZ89ZRU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "CHIL-GYO/Supporting File/Info.plist";
@@ -495,7 +495,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CHIL-GYO/Preview Content\"";
-				DEVELOPMENT_TEAM = D23XDL6TZZ;
+				DEVELOPMENT_TEAM = R62RZ89ZRU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "CHIL-GYO/Supporting File/Info.plist";
