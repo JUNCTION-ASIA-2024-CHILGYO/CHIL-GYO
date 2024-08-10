@@ -5,7 +5,7 @@
 //  Created by YunhakLee on 8/10/24.
 //
 
-import UIKit
+import SwiftUI
 import SwiftData
 
 @Model
@@ -16,8 +16,7 @@ final class User {
     var babyName: String
     var pregnancyDate: Date
     
-    @Relationship(deleteRule: .cascade)
-    var comments: [Comment] = []
+    @Relationship(deleteRule: .cascade) var comments: [Comment] = []
     
     init(userName: String, userProfileImageData: Data?, babyName: String, pregnancyDate: Date) {
         self.id = UUID()
@@ -29,8 +28,8 @@ final class User {
 }
 
 extension User {
-    var profileImage: Image {
-        guard let image = UIImage(data: userProfileImageData) else {
+    var userProfileImage: Image {
+        guard let data = userProfileImageData, let image = UIImage(data: data) else {
             return Image(systemName: "X")
         }
         return Image(uiImage: image)

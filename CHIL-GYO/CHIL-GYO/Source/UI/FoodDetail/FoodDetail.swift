@@ -14,5 +14,5 @@ struct FoodDetail: View {
 }
 
 #Preview {
-    Food()
+    FoodDetail()
 }

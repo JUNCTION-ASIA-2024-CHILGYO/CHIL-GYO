@@ -11,15 +11,14 @@ import SwiftUI
 @Model
 final class Food {
     @Attribute(.unique) var id: UUID
-    @Attribute(.externalStorage) var foodImageData: Data
+    @Attribute(.externalStorage) var foodImageData: Data?
     var name: String
     var notice: String
-    var issues: [String]
     
-    @Relationship(deleteRule: .cascade)
-    var comments: [Comment] = []
+    @Relationship(deleteRule: .cascade) var comments: [Comment] = []
+    @Relationship var issues: [Issue] = []
     
-    init(foodImageData: Data, name: String, notice: String, issues: [String]) {
+    init(foodImageData: Data?, name: String, notice: String, issues: [Issue]) {
         self.id = UUID()
         self.foodImageData = foodImageData
         self.name = name
@@ -30,7 +29,7 @@ final class Food {
 
 extension Food {
     var foodImage: Image {
-        guard let image = UIImage(data: foodImageData) else {
+        guard let data = foodImageData, let image = UIImage(data: data) else {
             return Image(systemName: "X")
         }
         return Image(uiImage: image)
