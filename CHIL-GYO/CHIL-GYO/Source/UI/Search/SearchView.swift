@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SearchView: View {
     @State private var searchText: String = ""
@@ -13,10 +14,16 @@ struct SearchView: View {
     @State private var suggestedSearches: [String] = []
     @State private var searchResults: [String] = []
     
-    private let allSearchSuggestions: [String] = [
-        "Strawberry", "Watermelon", "Pineapple", "Coffee", "Drinks",
-        "Mango", "Navigation", "Melon", "Strawberry juice", "Strawberry Cake"
-    ]
+    @Query var foods: [Food]
+    
+    private var allSearchSuggestions: [String] {
+        foods.map{$0.name}
+    }
+    
+//    private let allSearchSuggestions: [String] = [
+//        "Strawberry", "Watermelon", "Pineapple", "Coffee", "Drinks",
+//        "Mango", "Navigation", "Melon", "Strawberry juice", "Strawberry Cake"
+//    ]
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -43,6 +50,9 @@ struct SearchView: View {
                             updateSuggestedSearches()
                         }
                     }
+                    .onAppear(perform: {
+                        print(allSearchSuggestions)
+                    })
                     .foregroundStyle(Color.primary)
                     
                     if !searchText.isEmpty {

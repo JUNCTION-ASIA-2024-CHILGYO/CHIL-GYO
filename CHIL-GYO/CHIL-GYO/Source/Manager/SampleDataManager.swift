@@ -13,8 +13,7 @@ final class SampleDataManager {
     static let shared = SampleDataManager()
     
     func insertUserSampleData(modelContext: ModelContext) {
-        modelContext.insert(Food.halibutSashimi)
-        modelContext.insert(Food.tunaSashimi)
+        
     }
     
     func insertIssueSampleData(modelContext: ModelContext) {
@@ -25,13 +24,13 @@ final class SampleDataManager {
     }
     
     func insertFoodSampleData(modelContext: ModelContext) {
+        insertIssueSampleData(modelContext: modelContext)
         modelContext.insert(Food.halibutSashimi)
         modelContext.insert(Food.tunaSashimi)
     }
     
     func insertCommentSampleData(modelContext: ModelContext) {
-        modelContext.insert(Food.halibutSashimi)
-        modelContext.insert(Food.tunaSashimi)
+       
     }
     
     func reloadSampleData(modelContext: ModelContext) {
@@ -40,7 +39,6 @@ final class SampleDataManager {
             try modelContext.delete(model: Issue.self)
             try modelContext.delete(model: User.self)
             insertUserSampleData(modelContext: modelContext)
-            insertIssueSampleData(modelContext: modelContext)
             insertFoodSampleData(modelContext: modelContext)
             insertCommentSampleData(modelContext: modelContext)
         } catch {

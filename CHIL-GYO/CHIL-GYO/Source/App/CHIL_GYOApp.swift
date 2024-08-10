@@ -10,11 +10,11 @@ import SwiftData
 
 @main
 struct CHIL_GYOApp: App {
-
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: [User.self, Food.self])
+        .modelContainer(for: [Food.self, User.self, Issue.self])
     }
 }
