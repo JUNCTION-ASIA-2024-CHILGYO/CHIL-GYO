@@ -27,6 +27,7 @@
 		39758F762C67D23C00058011 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39758F752C67D23C00058011 /* Issue.swift */; };
 		39758F782C67D31C00058011 /* IssueSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39758F772C67D31C00058011 /* IssueSampleData.swift */; };
 		39758F7B2C67DACF00058011 /* SampleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39758F7A2C67DACF00058011 /* SampleDataManager.swift */; };
+		39758F7D2C67E15D00058011 /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39758F7C2C67E15D00058011 /* UINavigationController+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		39758F752C67D23C00058011 /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		39758F772C67D31C00058011 /* IssueSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueSampleData.swift; sourceTree = "<group>"; };
 		39758F7A2C67DACF00058011 /* SampleDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDataManager.swift; sourceTree = "<group>"; };
+		39758F7C2C67E15D00058011 /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				39758F522C678D2F00058011 /* View+.swift */,
+				39758F7C2C67E15D00058011 /* UINavigationController+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39758F7D2C67E15D00058011 /* UINavigationController+.swift in Sources */,
 				39758F622C678DEF00058011 /* FoodDetail.swift in Sources */,
 				1EEE01BB2C679DD3006F45C9 /* SearchView.swift in Sources */,
 				39758F532C678D2F00058011 /* View+.swift in Sources */,
