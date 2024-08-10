@@ -14,26 +14,35 @@ struct SearchView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
-                Image(systemName: "magnifyingglass")
+                Button(action: {
+                    
+                }, label: {
+                    Image(systemName: "chevron.left")
+                        .foregroundStyle(Color.black)
+                })
                 
-                TextField("Search...", text: $searchText, onCommit: {
-                    addRecentSearch()
-                }).foregroundColor(.primary)
-                
-                if !searchText.isEmpty {
-                    Button(action: {
-                        self.searchText = ""
-                    }) {
-                        Image(systemName: "xmark.circle.fill")
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                    
+                    TextField("Search...", text: $searchText, onCommit: {
+                        addRecentSearch()
+                    }).foregroundColor(.primary)
+                    
+                    if !searchText.isEmpty {
+                        Button(action: {
+                            self.searchText = ""
+                        }) {
+                            Image(systemName: "xmark.circle.fill")
+                        }
+                    } else {
+                        EmptyView()
                     }
-                } else {
-                    EmptyView()
                 }
+                .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
+                .foregroundColor(.secondary)
+                .background(Color(.secondarySystemBackground))
+                .cornerRadius(10.0)
             }
-            .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
-            .foregroundColor(.secondary)
-            .background(Color(.secondarySystemBackground))
-            .cornerRadius(10.0)
             
             if !recentSearches.isEmpty {
                 VStack(alignment: .leading, spacing: 0) {
