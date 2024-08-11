@@ -21,6 +21,7 @@ struct SearchBar: View {
                                 .foregroundColor(.labels)
                         }
                     }
+                Spacer()
             }
         }.frame(height: 36)
     }
