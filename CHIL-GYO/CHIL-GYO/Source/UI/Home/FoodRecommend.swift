@@ -16,7 +16,7 @@ struct FoodRecommend: View {
         
         VStack(alignment:.leading){
             
-            Text("Parenting Experts Recommend \n foods with folic acid and potassium!")
+            Text("Parenting Experts Recommend \nfoods with folic acid and potassium!")
                 .font(.title3)
                 .fontWeight(.bold)
                 .padding(.horizontal)
