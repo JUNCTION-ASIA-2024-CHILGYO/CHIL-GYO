@@ -221,7 +221,7 @@ private extension FoodDetail {
             Text(comment.comment)
                 .font(.callout)
                 .foregroundStyle(.black)
-                .lineLimit(0)
+                .lineLimit(nil)
         }
     }
     
