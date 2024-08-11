@@ -28,6 +28,8 @@
 		39758F782C67D31C00058011 /* IssueSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39758F772C67D31C00058011 /* IssueSampleData.swift */; };
 		39758F7B2C67DACF00058011 /* SampleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39758F7A2C67DACF00058011 /* SampleDataManager.swift */; };
 		39758F7D2C67E15D00058011 /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39758F7C2C67E15D00058011 /* UINavigationController+.swift */; };
+		39758F812C68110500058011 /* CommentSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39758F802C68110500058011 /* CommentSampleData.swift */; };
+		39758F832C68191900058011 /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39758F822C68191900058011 /* CustomTextEditor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		39758F772C67D31C00058011 /* IssueSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssueSampleData.swift; sourceTree = "<group>"; };
 		39758F7A2C67DACF00058011 /* SampleDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleDataManager.swift; sourceTree = "<group>"; };
 		39758F7C2C67E15D00058011 /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
+		39758F802C68110500058011 /* CommentSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentSampleData.swift; sourceTree = "<group>"; };
+		39758F822C68191900058011 /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +198,7 @@
 		39758F572C678D9C00058011 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				39758F822C68191900058011 /* CustomTextEditor.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -228,6 +233,7 @@
 				39758F712C67CDBA00058011 /* FoodSampleData.swift */,
 				39758F732C67CDC300058011 /* UserSampleData.swift */,
 				39758F772C67D31C00058011 /* IssueSampleData.swift */,
+				39758F802C68110500058011 /* CommentSampleData.swift */,
 			);
 			path = SampleData;
 			sourceTree = "<group>";
@@ -319,10 +325,12 @@
 				39758F3F2C678C4C00058011 /* ContentView.swift in Sources */,
 				39758F722C67CDBA00058011 /* FoodSampleData.swift in Sources */,
 				39758F5E2C678DDB00058011 /* Home.swift in Sources */,
+				39758F812C68110500058011 /* CommentSampleData.swift in Sources */,
 				39758F642C67922E00058011 /* SwiftDataExample.swift in Sources */,
 				39758F6D2C67B6CF00058011 /* Comment.swift in Sources */,
 				39758F6B2C67B35900058011 /* Food.swift in Sources */,
 				39758F7B2C67DACF00058011 /* SampleDataManager.swift in Sources */,
+				39758F832C68191900058011 /* CustomTextEditor.swift in Sources */,
 				39758F512C678CD300058011 /* StringLiterals.swift in Sources */,
 				39758F782C67D31C00058011 /* IssueSampleData.swift in Sources */,
 				39758F3D2C678C4C00058011 /* CHIL_GYOApp.swift in Sources */,

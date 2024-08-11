@@ -16,5 +16,5 @@ extension Food {
     static let tunaSashimi = Food(foodImageData: UIImage(resource: .tunaSashimi).jpegData(compressionQuality: 1),
                                   name: "Tuna sashimi",
                                   notice: "Max 0.6 ppm mercury per 100g per week",
-                                  issues: [.foodPoisoning, .mercury, .fetalNerves])
+                                  issues: [.foodPoisoning, .fetalNerves])
 }

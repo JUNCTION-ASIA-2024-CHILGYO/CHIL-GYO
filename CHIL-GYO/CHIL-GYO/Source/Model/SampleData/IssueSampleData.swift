@@ -15,5 +15,5 @@ extension Issue {
     static let mercury = Issue(name: "Mercury",
                                script: "Tuna sashimi is best eaten with caution, but fresh and in moderation is fine~! ")
     static let fetalNerves = Issue(name: "Fetal nerves",
-                                   script: "")
+                                   script: "Tuna sashimi is best eaten with caution, but fresh and in moderation is fine~!Tuna sashimi is best eaten with caution, but fresh and in moderation is fine~!Tuna sashimi is best eaten with caution, but fresh and in moderation is fine~!")
 }
