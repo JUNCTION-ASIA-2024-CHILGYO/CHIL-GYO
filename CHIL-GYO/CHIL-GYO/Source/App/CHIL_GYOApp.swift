@@ -13,7 +13,8 @@ struct CHIL_GYOApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //ContentView()
+            MyPageView()
         }
         .modelContainer(for: [Food.self, User.self, Issue.self, Comment.self])
     }
