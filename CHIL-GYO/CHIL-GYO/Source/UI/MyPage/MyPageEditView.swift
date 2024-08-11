@@ -124,6 +124,7 @@ struct MyPageEditView: View {
                         Text(selectedDateFormatted)
                             .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
                             .frame(maxWidth: .infinity, alignment: .leading)
+                            .foregroundStyle(Color.black)
                             .background(
                                 RoundedRectangle(cornerRadius: 8)
                                     .stroke(Color.chilBGSecondary, lineWidth: 1)
@@ -144,7 +145,7 @@ struct MyPageEditView: View {
                         .foregroundColor(.black)
                 },
                 trailing: Button(action: {
-                    // 데이터 수정 로직 추가
+                    // TODO: 데이터 수정 로직 추가
                     presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("Done")
@@ -156,7 +157,6 @@ struct MyPageEditView: View {
                 ImagePicker(selectedImage: $selectedImage, sourceType: imagePickerSourceType)
             }
             
-            // Custom Bottom Sheet with DatePicker
             if showCustomActionSheet {
                 Color.black.opacity(0.3)
                     .edgesIgnoringSafeArea(.all)
@@ -167,28 +167,12 @@ struct MyPageEditView: View {
                     }
                 
                 VStack(spacing: 0) {
-                    VStack {
+                    VStack(spacing: 0) {
                         DatePicker("Select Due Date", selection: $pregnancyDuration, displayedComponents: .date)
                             .datePickerStyle(WheelDatePickerStyle())
                             .labelsHidden()
-                            .padding()
-                    }
-                    .background(Color.white)
-                    
-                    Divider()
-                    
-                    HStack {
-                        Button(action: {
-                            withAnimation {
-                                showCustomActionSheet = false
-                            }
-                        }) {
-                            Text("Cancel")
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                        }
-                        
-                        Divider()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.chilLGray)
                         
                         Button(action: {
                             withAnimation {
@@ -197,17 +181,28 @@ struct MyPageEditView: View {
                         }) {
                             Text("Confirm")
                                 .frame(maxWidth: .infinity)
-                                .padding()
+                                .frame(height: 56)
+                                .background(Color.chilGray)
                         }
                     }
-                    .background(Color.white)
+                    .cornerRadius(14)
+                    
+                    Button(action: {
+                        withAnimation {
+                            showCustomActionSheet = false
+                        }
+                    }) {
+                        Text("Cancel")
+                            .fontWeight(.semibold)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .cornerRadius(14)
+                    }
                 }
                 .frame(width: UIScreen.main.bounds.width)
                 .background(Color.white)
-                .cornerRadius(16)
-                .shadow(radius: 20)
+                .cornerRadius(14)
                 .offset(y: showCustomActionSheet ? 0 : UIScreen.main.bounds.height)
-                .animation(.spring())
             }
         }
     }
@@ -219,7 +214,6 @@ struct MyPageEditView: View {
     }
 }
 
-// Helper view to present the image picker
 struct ImagePicker: UIViewControllerRepresentable {
     @Binding var selectedImage: UIImage?
     var sourceType: UIImagePickerController.SourceType
