@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetailInfo: View {
     
-    let cardName: String
+    @Binding var cardName: String?
         
         var body: some View {
             ScrollView {

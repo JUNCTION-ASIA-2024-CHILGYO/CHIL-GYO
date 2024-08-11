@@ -46,9 +46,7 @@ struct CheckInfo: View {
                    }
         .padding(.horizontal)
         .sheet(isPresented: $isShowingDetailInfo, content: {
-                    if let card = selectedCard {
-                        DetailInfo(cardName: card)
-                    }
+                        DetailInfo(cardName: $selectedCard)
                 })
             }
         }

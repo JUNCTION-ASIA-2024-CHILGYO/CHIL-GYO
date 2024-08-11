@@ -10,10 +10,10 @@ import SwiftData
 
 struct MyPageView: View {
     @Environment(\.dismiss) var dismiss
-    @Query var user: [User]
+    @Query var users: [User]
     
     private var me: User? {
-        user.first
+        users.first(where: {$0.userName == "Dancing Rabbit"})
     }
     
     var body: some View {

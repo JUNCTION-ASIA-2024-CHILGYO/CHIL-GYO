@@ -285,7 +285,7 @@ private extension FoodDetail {
     func formattedTime(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "yy.mm.D"
+        formatter.dateFormat = "yy.MM.dd"
         return formatter.string(from: date)
     }
     
