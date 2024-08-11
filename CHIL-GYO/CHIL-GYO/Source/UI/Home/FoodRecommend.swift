@@ -10,7 +10,7 @@ import SwiftUI
 
 struct FoodRecommend: View {
     
-    var items: [String] = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]
+    var items: [String] = ["FoodImage1", "FoodImage2", "FoodImage3"]
     
     var body: some View {
         
@@ -24,7 +24,7 @@ struct FoodRecommend: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 20) {
                     ForEach(items, id: \.self) { item in
-                        CarouselView(text: item)
+                        CarouselView(image: item)
                     }
                 }
                 .padding()

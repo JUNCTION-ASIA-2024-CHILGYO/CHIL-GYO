@@ -20,7 +20,7 @@ struct Home: View {
                         SearchBar()
                             .padding()
                         
-                        BabyInfo()
+                        Image(.card)
                             .padding(.top, 4)
                         
                         Image(.borderLine)
@@ -31,6 +31,9 @@ struct Home: View {
                         
                         CheckInfo()
                             .padding(.top, 36)
+                        
+                        Image(.bottomLine)
+                            .padding(.top, 25)
                     }
                 }
             }
