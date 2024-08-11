@@ -16,12 +16,15 @@ struct SearchBar: View {
                     .fill(Color.fills)
                     .cornerRadius(10)
                     .overlay{
-                        VStack(alignment: .leading){
-                            Text("\(Image(systemName: "magnifyingglass"))Search...")
-                                .foregroundColor(.labels)
+                        HStack{
+                            VStack(alignment: .leading){
+                                Text("\(Image(systemName: "magnifyingglass"))Search...")
+                                    .foregroundColor(.labels)
+                                
+                            }
+                            Spacer()
                         }
                     }
-                Spacer()
             }
         }.frame(height: 36)
     }
