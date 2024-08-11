@@ -12,7 +12,7 @@ struct ContentView: View {
     @AppStorage("firstLaunch") var firstLaunch: Bool = true
     
     var body: some View {
-        SearchView()
+        Home()
             .onAppear {
                 if firstLaunch {
                     SampleDataManager.shared.insertFoodSampleData(modelContext: modelContext)
