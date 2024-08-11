@@ -21,24 +21,33 @@ struct CheckInfo: View {
         GridItem(.flexible()),
         GridItem(.flexible()),
         GridItem(.flexible())
-        ]
+    ]
+    
+    @State private var selectedCard: String?
+    @State private var isShowingDetailInfo = false
         
     var body: some View {
-        VStack(alignment:.leading){
+        VStack(alignment: .leading) {
             
-            Text("Wait, did you check the information \n on this food?")
+            Text("Wait, did you check the information \non this food?")
                 .font(.title3)
                 .fontWeight(.bold)
                 .padding(.bottom, 16)
             
             LazyVGrid(columns: columns, spacing: 8) {
-                ForEach(data, id: \.self) { information in
-                    NavigationLink(destination: DetailInfo()) {
-                        
-                    }
-                }
+                           ForEach(data, id: \.self) { cardName in
+                               FoodCard(imageName: cardName)
+                                   .onTapGesture {
+                                       selectedCard = cardName
+                                       isShowingDetailInfo = true
+                                   }
+                           }
+                       }
+                   }
+        .padding(.horizontal)
+        .sheet(isPresented: $isShowingDetailInfo, content: {
+                        DetailInfo(cardName: $selectedCard)
+                })
             }
         }
-        .padding(.horizontal)
-    }
-}
+

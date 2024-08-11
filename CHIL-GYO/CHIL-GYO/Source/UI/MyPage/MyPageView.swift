@@ -9,14 +9,17 @@ import SwiftUI
 import SwiftData
 
 struct MyPageView: View {
-    @Query var user: [User]
-
+    @Environment(\.dismiss) var dismiss
+    @Query var users: [User]
+    
     private var me: User? {
-        user.first
+        users.first(where: {$0.userName == "Dancing Rabbit"})
     }
     
     var body: some View {
-        NavigationView {
+        ZStack {
+            Color.chilBGPrimary
+                .ignoresSafeArea()
             VStack(alignment: .leading, spacing: 0){
                 HStack {
                     Spacer()
@@ -30,8 +33,10 @@ struct MyPageView: View {
                 
                 Spacer()
                 
-                Divider()
-                    .background(Color.black)
+                Rectangle()
+                    .foregroundStyle(Color.black)
+                    .frame(height: 1)
+                    .padding(.bottom, 4)
                 
                 HStack {
                     Text("Nickname")
@@ -39,10 +44,13 @@ struct MyPageView: View {
                     
                     Text(me?.userName ?? "N/A")
                 }
+                .font(.body)
                 .padding(.bottom, 7)
                 
-                Divider()
-                    .background(Color.black)
+                Rectangle()
+                    .foregroundStyle(Color.black)
+                    .frame(height: 1)
+                    .padding(.bottom, 4)
                 
                 HStack {
                     Text("Child’s name")
@@ -50,10 +58,13 @@ struct MyPageView: View {
                     
                     Text(me?.babyName ?? "N/A")
                 }
+                .font(.body)
                 .padding(.bottom, 7)
                 
-                Divider()
-                    .background(Color.black)
+                Rectangle()
+                    .foregroundStyle(Color.black)
+                    .frame(height: 1)
+                    .padding(.bottom, 4)
                 
                 HStack {
                     Text("Due date")
@@ -61,15 +72,17 @@ struct MyPageView: View {
                     
                     Text("\(me?.pregnancyFeriod ?? 999)Weeks")
                 }
+                .font(.body)
                 .padding(.bottom, 7)
                 
                 Spacer()
             }
             .padding(.horizontal, 16)
             .navigationBarTitle("Profile", displayMode: .inline)
+            .navigationBarBackButtonHidden()
             .navigationBarItems(
                 leading: Button(action: {
-                    
+                    dismiss()
                 }) {
                     Image(systemName: "chevron.left")
                         .foregroundColor(.black)

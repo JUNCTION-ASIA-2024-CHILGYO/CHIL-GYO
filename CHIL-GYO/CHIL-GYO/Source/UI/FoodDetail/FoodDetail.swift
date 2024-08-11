@@ -9,16 +9,12 @@ import SwiftUI
 import SwiftData
 
 struct FoodDetail: View {
-    @Query var foods: [Food]
+    @Binding var food: Food
     @Query var users: [User]
     @Environment(\.modelContext) private var modelContext
     
     @State var showDetailIssue: Bool = false
     @State var commentText: String = ""
-    
-    var food: Food {
-        foods[0]
-    }
     
     var body: some View {
         ScrollView(.vertical) {
@@ -31,6 +27,7 @@ struct FoodDetail: View {
                 CommentSection
             }
         }
+        .scrollIndicators(.never)
         .contentMargins(.bottom, 120, for: .automatic)
         .overlay(alignment: .bottom) {
             CommentWrite
@@ -179,6 +176,19 @@ private extension FoodDetail {
         }
         .padding(16)
         .padding(.bottom, 8)
+        .onAppear {
+            if food.comments.count == 0 {
+                food.comments.append(Comment.dancingRabbit)
+                food.comments.append(Comment.screamingFox)
+                food.comments.append(Comment.drivingLemony)
+                food.comments.append(Comment.sleepingNagi)
+                User.dancingRabbit.comments.append(Comment.dancingRabbit)
+                User.screamingFox.comments.append(Comment.screamingFox)
+                User.drivingLemony.comments.append(Comment.drivingLemony)
+                User.sleepingNagi.comments.append(Comment.sleepingNagi)
+            }
+            print(food.comments)
+        }
     }
     
     func CommentRow(comment: Comment) -> some View {
@@ -275,7 +285,7 @@ private extension FoodDetail {
     func formattedTime(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "yy.HH.mm"
+        formatter.dateFormat = "yy.MM.dd"
         return formatter.string(from: date)
     }
     
@@ -292,20 +302,20 @@ private extension FoodDetail {
     }
 }
 
-#Preview {
-    let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(for: Food.self, Comment.self, User.self, configurations: config)
-    
-    container.mainContext.insert(Food.tunaSashimi)
-    container.mainContext.insert(Comment.screamingFox)
-    container.mainContext.insert(Comment.screamingFox)
-    container.mainContext.insert(User.screamingFox)
-    
-    Food.tunaSashimi.comments.append(Comment.screamingFox)
-    Food.tunaSashimi.comments.append(Comment.screamingFox)
-    Comment.screamingFox.user = User.screamingFox
-    
-    
-    return FoodDetail()
-        .modelContainer(container)
-}
+//#Preview {
+//    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+//    let container = try! ModelContainer(for: Food.self, Comment.self, User.self, configurations: config)
+//    
+//    container.mainContext.insert(Food.tunaSashimi)
+//    container.mainContext.insert(Comment.screamingFox)
+//    container.mainContext.insert(Comment.screamingFox)
+//    container.mainContext.insert(User.screamingFox)
+//    
+//    Food.tunaSashimi.comments.append(Comment.screamingFox)
+//    Food.tunaSashimi.comments.append(Comment.screamingFox)
+//    Comment.screamingFox.user = User.screamingFox
+//    
+//    
+//    return FoodDetail()
+//        .modelContainer(container)
+//}

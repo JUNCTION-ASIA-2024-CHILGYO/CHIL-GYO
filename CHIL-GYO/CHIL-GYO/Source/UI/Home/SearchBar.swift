@@ -10,22 +10,20 @@ import SwiftUI
 struct SearchBar: View {
     
     var body: some View {
-        
-        NavigationView {
-            NavigationLink(destination: SearchView()) {
-                    HStack{
-                        Rectangle()
-                            .fill(Color.fills)
-                            .cornerRadius(10)
-                            .overlay{
-                                VStack(alignment: .leading){
-                                    Text("\(Image(systemName: "magnifyingglass"))Search...")
-                                        .foregroundColor(.labels)
-                                }
-                            }
+            HStack{
+                Rectangle()
+                    .fill(Color.fills)
+                    .cornerRadius(10)
+                    .overlay{
+                        HStack{
+                            Text("\(Image(systemName: "magnifyingglass"))Search...")
+                                .foregroundColor(.labels)
+                                .padding()
+                            
+                            Spacer()
+                        }
                     }
-                }
-            }
-        .frame(height: 36)
+            }.frame(height: 36)
         }
-    }
+    
+}
