@@ -35,9 +35,9 @@ final class SampleDataManager {
     
     func reloadSampleData(modelContext: ModelContext) {
         do {
-            try modelContext.delete(model: Food.self)
             try modelContext.delete(model: Issue.self)
             try modelContext.delete(model: User.self)
+            //try modelContext.delete(model: Food.self)
             insertUserSampleData(modelContext: modelContext)
             insertFoodSampleData(modelContext: modelContext)
             insertCommentSampleData(modelContext: modelContext)

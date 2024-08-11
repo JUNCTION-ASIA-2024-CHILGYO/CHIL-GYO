@@ -11,9 +11,9 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     
     var body: some View {
-        SearchView()
+        Home()
             .onAppear {
-                SampleDataManager.shared.insertFoodSampleData(modelContext: modelContext)
+               SampleDataManager.shared.reloadSampleData(modelContext: modelContext)
             }
     }
 }

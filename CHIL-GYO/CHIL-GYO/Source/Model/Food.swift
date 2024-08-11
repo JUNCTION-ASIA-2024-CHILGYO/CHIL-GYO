@@ -16,7 +16,7 @@ final class Food {
     var notice: String
     
     @Relationship(deleteRule: .cascade) var comments: [Comment] = []
-    @Relationship var issues: [Issue] = []
+    @Relationship(inverse: \Issue.foods) var issues: [Issue] = []
     
     init(foodImageData: Data?, name: String, notice: String, issues: [Issue]) {
         self.id = UUID()

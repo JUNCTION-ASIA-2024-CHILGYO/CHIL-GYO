@@ -13,7 +13,7 @@ final class Issue {
     @Attribute(.unique) var name: String
     var script: String
     
-    @Relationship(inverse: \Food.issues) var foods: [Food] = []
+    var foods: [Food] = []
     
     init(name: String, script: String) {
         self.name = name

@@ -11,131 +11,140 @@ import SwiftData
 struct SearchView: View {
     @State private var searchText: String = ""
     @State private var recentSearches: [String] = []
-    @State private var suggestedSearches: [String] = []
-    @State private var searchResults: [String] = []
+    @State private var suggestedSearches: [Food] = []
+    @State private var searchResults: [Food] = []
+    @State private var isSelectingByRecomment: Bool = false
     
     @Query var foods: [Food]
     
-    private var allSearchSuggestions: [String] {
-        foods.map{$0.name}
-    }
-    
-//    private let allSearchSuggestions: [String] = [
-//        "Strawberry", "Watermelon", "Pineapple", "Coffee", "Drinks",
-//        "Mango", "Navigation", "Melon", "Strawberry juice", "Strawberry Cake"
-//    ]
-    
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            HStack {
-                Button(action: {
-                    
-                }, label: {
-                    Image(systemName: "chevron.left")
-                        .foregroundStyle(Color.black)
-                })
-                
+            VStack(alignment: .leading, spacing: 0) {
                 HStack {
-                    Image(systemName: "magnifyingglass")
-                    
-                    TextField("Search...", text: $searchText, onCommit: {
-                        handleSearch()
+                    Button(action: {
+                        
+                    }, label: {
+                        Image(systemName: "chevron.left")
+                            .foregroundStyle(Color.black)
                     })
-                    .onChange(of: searchText) { _, _ in
-                        if searchText.isEmpty {
-                            searchResults = []
-                            updateSuggestedSearches()
-                        } else {
-                            searchResults = []
-                            updateSuggestedSearches()
-                        }
-                    }
-                    .onAppear(perform: {
-                        print(allSearchSuggestions)
-                    })
-                    .foregroundStyle(Color.primary)
                     
-                    if !searchText.isEmpty {
-                        Button(action: {
-                            self.searchText = ""
-                            self.suggestedSearches = []
-                            self.searchResults = []
-                        }) {
-                            Image(systemName: "xmark.circle.fill")
-                        }
-                    } else {
-                        EmptyView()
-                    }
-                }
-                .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
-                .foregroundStyle(Color.secondary)
-                .background(Color(.secondarySystemBackground))
-                .cornerRadius(10.0)
-            }
-            
-            if !searchText.isEmpty && !searchResults.isEmpty {
-                ForEach(searchResults, id: \.self) { item in
-                    Rectangle()
-                        .frame(width: 136, height: 172)
-                }
-            } else if !searchText.isEmpty && !suggestedSearches.isEmpty {
-                VStack(alignment: .leading, spacing: 0) {
-                    Text("Recommands")
-                        .fontWeight(.semibold)
-                        .padding(.top, 20)
-                    
-                    ForEach(suggestedSearches, id: \.self) { item in
-                        VStack(alignment: .leading, spacing: 0) {
-                            Text(item)
-                                .padding(.vertical, 8)
-                                .padding(.leading, 10)
-                                .padding(.trailing, 10)
-                            
-                            Divider()
-                        }
-                    }
-                }
-            } else if !recentSearches.isEmpty {
-                VStack(alignment: .leading, spacing: 0) {
-                    Text("Recents")
-                        .fontWeight(.semibold)
-                        .padding(.top, 20)
-                    
-                    WrappingHStack(items: recentSearches, spacing: 8) { item in
-                        HStack(spacing: 8) {
-                            Text(item)
-                                .padding(.vertical, 8)
-                                .padding(.leading, 10)
-                                .padding(.trailing, 2)
-                            
-                            Button(action: {
-                                deleteRecentSearch(item)
-                            }) {
-                                Image(systemName: "xmark")
-                                    .foregroundStyle(Color.black)
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                        
+                        TextField("Search...", text: $searchText, onCommit: {
+                            handleSearch()
+                        })
+                        .onChange(of: searchText) { _, _ in
+                            if searchText.isEmpty {
+                                searchResults = []
+                                updateSuggestedSearches()
+                                isSelectingByRecomment = false
+                            } else if isSelectingByRecomment {
+                                
+                            } else {
+                                searchResults = []
+                                updateSuggestedSearches()
                             }
-                            .padding(.trailing, 10)
                         }
-                        .background(
-                            RoundedRectangle(cornerRadius: 999)
-                                .stroke(Color.black, lineWidth: 1)
-                        )
-                        .padding(.top, 4)
+                        .onAppear(perform: {
+                            print(foods)
+                        })
+                        .foregroundStyle(Color.primary)
+                        
+                        if !searchText.isEmpty {
+                            Button(action: {
+                                self.searchText = ""
+                                self.suggestedSearches = []
+                                self.searchResults = []
+                            }) {
+                                Image(systemName: "xmark.circle.fill")
+                            }
+                        } else {
+                            EmptyView()
+                        }
+                    }
+                    .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
+                    .foregroundStyle(Color.secondary)
+                    .background(Color(.secondarySystemBackground))
+                    .cornerRadius(10.0)
+                }
+                
+                if !searchText.isEmpty && !searchResults.isEmpty {
+                    SearchResultView(foods: $searchResults)
+                } else if !searchText.isEmpty && !suggestedSearches.isEmpty {
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text("Recommands")
+                            .fontWeight(.semibold)
+                            .padding(.top, 20)
+                        
+                        ForEach(suggestedSearches, id: \.self) { item in
+                            VStack(alignment: .leading, spacing: 0) {
+                                Button {
+                                    isSelectingByRecomment = true
+                                    searchText = item.name
+                                    searchResults = foods.filter { $0.name.lowercased().contains(item.name.lowercased()) }
+                                    
+                                } label: {
+                                    Text(item.name)
+                                        .padding(.vertical, 8)
+                                        .padding(.leading, 10)
+                                        .padding(.trailing, 10)
+                                        .tint(.black)
+                                }
+                                Divider()
+                            }
+                        }
+                    }
+                } else if !recentSearches.isEmpty {
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text("Recents")
+                            .fontWeight(.semibold)
+                            .padding(.top, 20)
+                        
+                        WrappingHStack(items: recentSearches, spacing: 8) { item in
+                            HStack(spacing: 8) {
+                                Button {
+                                    isSelectingByRecomment = true
+                                    searchText = item
+                                    searchResults = foods.filter { $0.name.lowercased().contains(item.lowercased()) }
+                                } label: {
+                                    Text(item)
+                                        .padding(.vertical, 8)
+                                        .padding(.leading, 10)
+                                        .padding(.trailing, 2)
+                                        .tint(.black)
+                                }
+                                
+                                Button(action: {
+                                    deleteRecentSearch(item)
+                                }) {
+                                    Image(systemName: "xmark")
+                                        .foregroundStyle(Color.black)
+                                }
+                                .padding(.trailing, 10)
+                            }
+                            .background(
+                                RoundedRectangle(cornerRadius: 999)
+                                    .stroke(Color.black, lineWidth: 1)
+                            )
+                            .padding(.top, 4)
+                        }
                     }
                 }
+                
+                Spacer()
             }
-            
-            Spacer()
-        }
-        .padding(.horizontal, 16)
+            .padding(.horizontal, 16)
+            .navigationTitle("")
+            .toolbar(.hidden, for: .navigationBar)
     }
     
     private func handleSearch() {
         if !searchText.isEmpty {
+            isSelectingByRecomment = false
             recentSearches.removeAll(where: { $0 == searchText })
             recentSearches.insert(searchText, at: 0)
             
-            searchResults = allSearchSuggestions.filter { $0.lowercased().contains(searchText.lowercased()) }
+            searchResults = foods.filter { $0.name.lowercased().contains(searchText.lowercased()) }
             
             searchText = ""
             suggestedSearches = []
@@ -148,7 +157,7 @@ struct SearchView: View {
     
     private func updateSuggestedSearches() {
         if !searchText.isEmpty {
-            suggestedSearches = allSearchSuggestions.filter { $0.lowercased().contains(searchText.lowercased()) }
+            suggestedSearches = foods.filter { $0.name.lowercased().contains(searchText.lowercased()) }
         } else {
             suggestedSearches = []
         }
