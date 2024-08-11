@@ -19,9 +19,13 @@ struct Home: View {
                             VStack {
                                 SearchBar()
                                     .padding()
+                                NavigationLink {
+                                    MyPageView()
+                                } label: {
+                                    Image(.ageCard1)
+                                        .padding(.top, 4)
+                                }
                                 
-                                Image(.ageCard1)
-                                    .padding(.top, 4)
                                 
                                 Image(.borderLine)
                                     .padding(.top, 40)
