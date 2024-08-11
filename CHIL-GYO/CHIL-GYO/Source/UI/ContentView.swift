@@ -9,11 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
+    @AppStorage("firstLaunch") var firstLaunch: Bool = true
     
     var body: some View {
         SearchView()
             .onAppear {
-                SampleDataManager.shared.insertFoodSampleData(modelContext: modelContext)
+                if firstLaunch {
+                    SampleDataManager.shared.insertFoodSampleData(modelContext: modelContext)
+                    SampleDataManager.shared.insertUserSampleData(modelContext: modelContext)
+                    SampleDataManager.shared.insertCommentSampleData(modelContext: modelContext)
+                    firstLaunch = false
+                }
             }
     }
 }

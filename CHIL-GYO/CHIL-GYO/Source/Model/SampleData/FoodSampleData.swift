@@ -57,7 +57,7 @@ extension Food {
                                   name: "Tea",
                                   notice: "Caffeine is limited to 300mg per day",
                                   issues: [.complicationsOfChildbirth])
-    static let Soda = Food(foodImageData: UIImage(resource: .tunaSashimi).jpegData(compressionQuality: 1),
+    static let soda = Food(foodImageData: UIImage(resource: .tunaSashimi).jpegData(compressionQuality: 1),
                                   name: "Soda",
                                   notice: "Caffeine is limited to 300mg per day",
                            issues: [.complicationsOfChildbirth, .gestationalDiabetes])

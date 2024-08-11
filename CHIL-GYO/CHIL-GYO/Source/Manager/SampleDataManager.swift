@@ -13,24 +13,41 @@ final class SampleDataManager {
     static let shared = SampleDataManager()
     
     func insertUserSampleData(modelContext: ModelContext) {
-        
+        modelContext.insert(User.screamingFox)
+        modelContext.insert(User.dancingRabbit)
     }
     
     func insertIssueSampleData(modelContext: ModelContext) {
-        modelContext.insert(Issue.virus)
+        modelContext.insert(Issue.atopy)
         modelContext.insert(Issue.fetalNerves)
-        modelContext.insert(Issue.mercury)
+        modelContext.insert(Issue.gestationalDiabetes)
         modelContext.insert(Issue.foodPoisoning)
     }
     
     func insertFoodSampleData(modelContext: ModelContext) {
         insertIssueSampleData(modelContext: modelContext)
-        modelContext.insert(Food.halibutSashimi)
         modelContext.insert(Food.tunaSashimi)
+        modelContext.insert(Food.flatSashimi)
+        modelContext.insert(Food.soda)
+        modelContext.insert(Food.aRawClam)
+        modelContext.insert(Food.aRawOyster)
+        modelContext.insert(Food.chocolate)
+        modelContext.insert(Food.coffee)
+        modelContext.insert(Food.frenchFries)
+        modelContext.insert(Food.hamburger)
+        modelContext.insert(Food.okdom)
+        modelContext.insert(Food.pizza)
+        modelContext.insert(Food.salmonSashimi)
+        modelContext.insert(Food.shark)
+        modelContext.insert(Food.swordfish)
+        modelContext.insert(Food.tea)
+        modelContext.insert(Food.tuna)
+        modelContext.insert(Food.yukhoe)
     }
     
     func insertCommentSampleData(modelContext: ModelContext) {
-       
+        modelContext.insert(Comment.dancingRabbit)
+        modelContext.insert(Comment.screamingFox)
     }
     
     func reloadSampleData(modelContext: ModelContext) {
