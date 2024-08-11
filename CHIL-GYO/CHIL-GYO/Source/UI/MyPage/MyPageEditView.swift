@@ -35,7 +35,7 @@ struct MyPageEditView: View {
                                         .frame(width: 192, height: 192)
                                 )
                         } else {
-                            Image("profile")
+                            Image("profile1")
                                 .resizable()
                                 .frame(width: 207, height: 207)
                                 .clipShape(Circle())
