@@ -6,15 +6,22 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct MyPageView: View {
+    @Query var user: [User]
+
+    private var me: User? {
+        user.first
+    }
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 0){
                 HStack {
                     Spacer()
                     
-                    Image(.profile)
+                    Image(.profile1)
                         .frame(width: 240, height: 240)
                     
                     Spacer()
@@ -30,7 +37,7 @@ struct MyPageView: View {
                     Text("Nickname")
                         .frame(width: 170, alignment: .topLeading)
                     
-                    Text("Kumi Lee")
+                    Text(me?.userName ?? "N/A")
                 }
                 .padding(.bottom, 7)
                 
@@ -41,7 +48,7 @@ struct MyPageView: View {
                     Text("Child’s name")
                         .frame(width: 170, alignment: .topLeading)
                     
-                    Text("Lemony")
+                    Text(me?.babyName ?? "N/A")
                 }
                 .padding(.bottom, 7)
                 
@@ -52,7 +59,7 @@ struct MyPageView: View {
                     Text("Due date")
                         .frame(width: 170, alignment: .topLeading)
                     
-                    Text("3Weeks")
+                    Text("\(me?.pregnancyFeriod ?? 999)Weeks")
                 }
                 .padding(.bottom, 7)
                 
