@@ -8,16 +8,13 @@
 import SwiftUI
 
 struct CarouselView: View {
-    let text: String
+    let image: String
      
      var body: some View {
          VStack {
-             Text(text)
-                 .font(.largeTitle)
-                 .foregroundColor(.white)
+             Image(image)
          }
          .frame(width: 148, height: 180)
-         .background(Color.chilBlue)
          .cornerRadius(16)
      }
 }

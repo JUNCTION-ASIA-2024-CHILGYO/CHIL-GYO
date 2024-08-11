@@ -9,7 +9,14 @@ import SwiftUI
 
 struct CheckInfo: View {
     
-    let data = Array(1...10).map { "목록 \($0)"}
+    let data : [String] = [
+        "FoodCard1",
+        "FoodCard2",
+        "FoodCard3",
+        "FoodCard4",
+        "FoodCard5"
+    ]
+    
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -26,17 +33,9 @@ struct CheckInfo: View {
             
             LazyVGrid(columns: columns, spacing: 8) {
                 ForEach(data, id: \.self) { information in
-                    VStack{
-                        Text(information)
-                            .font(.largeTitle)
-                            .foregroundColor(.white)
-                    } 
-                    .frame(width: 115, height: 124)
-                        .background(Color.chilRed)
-                        .cornerRadius(12)
-//                    NavigationLink(destination: CardFlipView(boastID: boast.id)){
-//                        AwardThumbnailView(id: boast.id)
-//                    }
+                    NavigationLink(destination: DetailInfo()) {
+                        
+                    }
                 }
             }
         }

@@ -12,7 +12,7 @@ struct SearchBar: View {
     var body: some View {
         
         NavigationView {
-            NavigationLink(destination: SearchField()) {
+            NavigationLink(destination: SearchView()) {
                     HStack{
                         Rectangle()
                             .fill(Color.fills)
