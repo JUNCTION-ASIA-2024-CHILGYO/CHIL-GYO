@@ -17,8 +17,10 @@ struct Home: View {
                     VStack(spacing: 0) {
                         ScrollView(showsIndicators: false) {
                             VStack {
-                                SearchBar()
-                                    .padding()
+                                NavigationLink(destination: SearchView()) {
+                                    SearchBar()
+                                        .padding()
+                                }
                                 NavigationLink {
                                     MyPageView()
                                 } label: {
@@ -41,7 +43,7 @@ struct Home: View {
                             }
                         }
                     }
-                    .padding(.top, 70)
+                    .padding(.top, 54)
                 }
                 .ignoresSafeArea()
             }

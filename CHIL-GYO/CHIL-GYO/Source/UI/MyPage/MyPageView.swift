@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct MyPageView: View {
+    @Environment(\.dismiss) var dismiss
     @Query var user: [User]
 
     private var me: User? {
@@ -66,9 +67,10 @@ struct MyPageView: View {
             }
             .padding(.horizontal, 16)
             .navigationBarTitle("Profile", displayMode: .inline)
+            .navigationBarBackButtonHidden()
             .navigationBarItems(
                 leading: Button(action: {
-                    
+                    dismiss()
                 }) {
                     Image(systemName: "chevron.left")
                         .foregroundColor(.black)

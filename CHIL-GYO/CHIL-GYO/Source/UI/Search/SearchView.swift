@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct SearchView: View {
+    @Environment(\.dismiss) var dismiss
     @State private var searchText: String = ""
     @State private var recentSearches: [String] = []
     @State private var suggestedSearches: [Food] = []
@@ -21,7 +22,7 @@ struct SearchView: View {
             VStack(alignment: .leading, spacing: 0) {
                 HStack {
                     Button(action: {
-                        
+                        dismiss()
                     }, label: {
                         Image(systemName: "chevron.left")
                             .foregroundStyle(Color.black)
