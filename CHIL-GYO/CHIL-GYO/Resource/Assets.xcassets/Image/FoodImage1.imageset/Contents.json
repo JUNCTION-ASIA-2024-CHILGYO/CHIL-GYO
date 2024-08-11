@@ -1,14 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "FoodCard.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "FoodCard@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "FoodCard@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
