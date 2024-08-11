@@ -16,7 +16,6 @@ struct MyPageView: View {
     }
     
     var body: some View {
-        NavigationView {
             VStack(alignment: .leading, spacing: 0){
                 HStack {
                     Spacer()
@@ -80,7 +79,6 @@ struct MyPageView: View {
                 }
             )
         }
-    }
 }
 
 #Preview {
