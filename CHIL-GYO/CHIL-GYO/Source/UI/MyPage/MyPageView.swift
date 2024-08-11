@@ -11,12 +11,15 @@ import SwiftData
 struct MyPageView: View {
     @Environment(\.dismiss) var dismiss
     @Query var user: [User]
-
+    
     private var me: User? {
         user.first
     }
     
     var body: some View {
+        ZStack {
+            Color.chilBGPrimary
+                .ignoresSafeArea()
             VStack(alignment: .leading, spacing: 0){
                 HStack {
                     Spacer()
@@ -30,8 +33,10 @@ struct MyPageView: View {
                 
                 Spacer()
                 
-                Divider()
-                    .background(Color.black)
+                Rectangle()
+                    .foregroundStyle(Color.black)
+                    .frame(height: 1)
+                    .padding(.bottom, 4)
                 
                 HStack {
                     Text("Nickname")
@@ -39,10 +44,13 @@ struct MyPageView: View {
                     
                     Text(me?.userName ?? "N/A")
                 }
+                .font(.body)
                 .padding(.bottom, 7)
                 
-                Divider()
-                    .background(Color.black)
+                Rectangle()
+                    .foregroundStyle(Color.black)
+                    .frame(height: 1)
+                    .padding(.bottom, 4)
                 
                 HStack {
                     Text("Child’s name")
@@ -50,10 +58,13 @@ struct MyPageView: View {
                     
                     Text(me?.babyName ?? "N/A")
                 }
+                .font(.body)
                 .padding(.bottom, 7)
                 
-                Divider()
-                    .background(Color.black)
+                Rectangle()
+                    .foregroundStyle(Color.black)
+                    .frame(height: 1)
+                    .padding(.bottom, 4)
                 
                 HStack {
                     Text("Due date")
@@ -61,6 +72,7 @@ struct MyPageView: View {
                     
                     Text("\(me?.pregnancyFeriod ?? 999)Weeks")
                 }
+                .font(.body)
                 .padding(.bottom, 7)
                 
                 Spacer()
@@ -81,6 +93,7 @@ struct MyPageView: View {
                 }
             )
         }
+    }
 }
 
 #Preview {

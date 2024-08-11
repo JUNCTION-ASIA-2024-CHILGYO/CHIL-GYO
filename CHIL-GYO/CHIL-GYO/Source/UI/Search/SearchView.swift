@@ -8,8 +8,13 @@
 import SwiftUI
 import SwiftData
 
+enum FocusField {
+    case main
+}
+
 struct SearchView: View {
     @Environment(\.dismiss) var dismiss
+    @FocusState private var focusState: FocusField?
     @State private var searchText: String = ""
     @State private var recentSearches: [String] = []
     @State private var suggestedSearches: [Food] = []
@@ -34,6 +39,7 @@ struct SearchView: View {
                         TextField("Search...", text: $searchText, onCommit: {
                             handleSearch()
                         })
+                        .focused($focusState, equals: .main)
                         .onChange(of: searchText) { _, _ in
                             if searchText.isEmpty {
                                 searchResults = []
@@ -48,6 +54,7 @@ struct SearchView: View {
                         }
                         .onAppear(perform: {
                             print(foods)
+                            focusState = .main
                         })
                         .foregroundStyle(Color.primary)
                         

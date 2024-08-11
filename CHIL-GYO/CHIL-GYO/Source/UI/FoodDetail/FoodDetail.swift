@@ -176,6 +176,19 @@ private extension FoodDetail {
         }
         .padding(16)
         .padding(.bottom, 8)
+        .onAppear {
+            if food.comments.count == 0 {
+                food.comments.append(Comment.dancingRabbit)
+                food.comments.append(Comment.screamingFox)
+                food.comments.append(Comment.drivingLemony)
+                food.comments.append(Comment.sleepingNagi)
+                User.dancingRabbit.comments.append(Comment.dancingRabbit)
+                User.screamingFox.comments.append(Comment.screamingFox)
+                User.drivingLemony.comments.append(Comment.drivingLemony)
+                User.sleepingNagi.comments.append(Comment.sleepingNagi)
+            }
+            print(food.comments)
+        }
     }
     
     func CommentRow(comment: Comment) -> some View {
@@ -272,7 +285,7 @@ private extension FoodDetail {
     func formattedTime(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_KR")
-        formatter.dateFormat = "yy.HH.mm"
+        formatter.dateFormat = "yy.mm.D"
         return formatter.string(from: date)
     }
     

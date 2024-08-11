@@ -48,6 +48,13 @@ final class SampleDataManager {
     func insertCommentSampleData(modelContext: ModelContext) {
         modelContext.insert(Comment.dancingRabbit)
         modelContext.insert(Comment.screamingFox)
+        [Food.tunaSashimi, Food.flatSashimi, Food.soda, Food.aRawClam,
+         Food.aRawOyster, Food.chocolate, Food.coffee, Food.frenchFries, Food.hamburger, Food.okdom, Food.pizza, Food.salmonSashimi, Food.shark, Food.swordfish, Food.tea, Food.tuna, Food.yukhoe].forEach {
+            $0.comments.append(Comment.dancingRabbit)
+            $0.comments.append(Comment.screamingFox)
+        }
+        Comment.dancingRabbit.user = User.dancingRabbit
+        Comment.screamingFox.user = User.screamingFox
     }
     
     func reloadSampleData(modelContext: ModelContext) {
